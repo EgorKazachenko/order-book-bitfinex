@@ -1,0 +1,27 @@
+.OrderBookWidget {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+  gap: 80px;
+
+  & .OrderBookWidget_OrderBookWrap {
+    background: #172d3e;
+    padding: 30px;
+    border-radius: 8px;
+  }
+
+  & .OrderBookWidget_ButtonsWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+
+    & .OrderBookWidget_ButtonsWrap_ButtonWrap {
+      min-width: 100px;
+    }
+  }
+}

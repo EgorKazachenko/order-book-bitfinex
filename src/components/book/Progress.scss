@@ -1,0 +1,11 @@
+.Progress {
+  height: 100%;
+  width: 100%;
+
+  & .Progress_Bar {
+    height: 100%;
+    transition-property: width;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+  }
+}

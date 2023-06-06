@@ -1,0 +1,21 @@
+.OrderBook {
+  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .OrderBook_StatusWrap {
+    display: flex;
+    justify-content: center;
+
+    .OrderBook_Status {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .OrderBook_RecordsWrap {
+    display: flex;
+    flex-direction: row;
+  }
+}
