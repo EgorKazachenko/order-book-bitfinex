@@ -1,15 +1,4 @@
-import {
-  all,
-  call,
-  delay,
-  fork,
-  join,
-  put,
-  race,
-  select,
-  take,
-  takeLatest,
-} from 'typed-redux-saga';
+import { call, delay, fork, join, put, race, select, take, takeLatest } from 'typed-redux-saga';
 import { ActionType } from 'typesafe-actions';
 
 import {
@@ -52,7 +41,7 @@ function* handler(
 
     const dataSourceProxyT = yield* fork(dataSourceProxy, { loggerService }, dataSourceService);
 
-    yield* all([take(enableDataSource.cancel), join(dataSourceProxyT)]);
+    yield* race([take(enableDataSource.cancel), join(dataSourceProxyT)]);
 
     if (dataSourceProxyT.isRunning()) {
       dataSourceProxyT.cancel();
