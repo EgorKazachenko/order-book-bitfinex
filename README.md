@@ -1,46 +1,43 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Live Ticker program
+You need to consume a web service using web sockets, and present it in the form of charts
+real-time.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img width="1020" alt="Screenshot 2023-06-22 at 08 52 16" src="https://github.com/EgorKazachenko/order-book-bitfinex/assets/23015635/1558f629-bbca-4e3d-be56-e73df11f0f94">
 
-### `npm test`
+Task:
+Orderbook holds the information of all the buy and sale price details of a trade with its
+corresponding price, amount and quantity.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://trading.bitfinex.com/t?demo=true
 
-### `npm run build`
+Recreate the order book widget present in the above url by using,
+1. React.js components.
+2. SCSS for styling the charts.
+3. Redux / Redux saga for data management.
+4. Please use redux state mangement to solve this problem.
+5. Use the right data structure for storing and retrieving data easily and fast.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Api details:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Web service url : wss://api-pub.bitfinex.com/ws/2
+Verbs:
+{
+  "event": "subscribe",
+  "channel": "book",
+  "symbol": "tBTCUSD"
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once you subscribe to the web socket, onMessage callback will start receiving
+Acknowledgement, and then stream of data.
+Data is composed of the items displayed on the order book.
+Maintain the store in such a way that, even if we refresh the page, the trades of old data is
+retained.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+For more details visit,
+https://docs.bitfinex.com/docs/ws-general
